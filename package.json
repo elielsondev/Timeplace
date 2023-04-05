@@ -1,0 +1,14 @@
+{
+  "name": "timeplace",
+  "version": "1.0.0",
+  "description": "Projeto criado para implementar um relógio e um cronometro.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Elielson Nascimento <nascimento.elielson@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "styled-components": "^5.3.9"
+  }
+}
