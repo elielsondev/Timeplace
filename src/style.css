@@ -2,5 +2,66 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    max-width: 100%;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+header {
+    background-color: blue;
+    color: yellow;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    margin-top: 0;
+}
+
+#title {
+    margin: 10px;
+    font-size: 34px;
+}
+
+#clock {
+    margin: 10px;
+    font-size: 34px;
+}
+
+main {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+}
+
+#stopwatch {
+    font-size: 900%;
+    margin-top: 100px;
+}
+
+#btn-start {
+    background-color: green;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 30px;
+    font-weight: 700;
+    padding: 15px 30px;
+}
+
+footer {
+    background-color: #e6e6e6c7;
+    color: #010053;
+    padding: 12px 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 }
