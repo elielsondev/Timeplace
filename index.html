@@ -1,26 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./src/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/style.css" />
     <title>Timeplace</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1 id='title'>Timeplace</h1>
-        <h2 id='clock'>00:00:00h - 00/00/0000</h2>
+      <h1 id="title">Timeplace</h1>
+      <h2 id="clock"></h2>
     </header>
 
     <main>
-        <h2 id='stopwatch'>00:00:00:000</h2>
-        <input type="button" id="btn-start" value="START">
+      <h2 id="stopwatch"></h2>
+      <div id="inputTime">
+        <label for="hours"
+          >Hora:
+          <br />
+          <input type="number" name="hours" id="hours" min="0" max="59" placeholder="HH"/>
+        </label>
+
+        <label for="minutes"
+          >Minutos:
+          <br />
+          <input type="number" name="minutes" id="minutes" min="0" max="59" placeholder="MM" />
+        </label>
+
+        <label for="seconds"
+          >Segundos:
+          <br />
+          <input type="number" name="seconds" id="seconds" min="0" max="59" placeholder="SS" />
+        </label>
+      </div>
+      <input type="button" id="btn-start" value="START" />
     </main>
 
     <footer>
-        <h5>By Elielson Nascimento - All Rights Reserved</h5>
+      <h5>By Elielson Nascimento - All Rights Reserved</h5>
     </footer>
     <script src="./src/script.js"></script>
-</body>
+  </body>
 </html>
