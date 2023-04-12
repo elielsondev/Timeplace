@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./src/style.css" />
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     <title>Timeplace</title>
   </head>
   <body>
@@ -14,27 +15,29 @@
     </header>
 
     <main>
-      <h2 id="stopwatch"></h2>
+      <h2 id="stopwatch">00:00:00</h2>
       <div id="inputTime">
         <label for="hours"
           >Hora:
           <br />
-          <input type="number" name="hours" id="hours" min="0" max="59" placeholder="HH"/>
+          <input type="number" name="hours" id="hours" min="1" max="59" placeholder="HH"/>
         </label>
 
         <label for="minutes"
           >Minutos:
           <br />
-          <input type="number" name="minutes" id="minutes" min="0" max="59" placeholder="MM" />
+          <input type="number" name="minutes" id="minutes" min="1" max="59" placeholder="MM" />
         </label>
 
         <label for="seconds"
           >Segundos:
           <br />
-          <input type="number" name="seconds" id="seconds" min="0" max="59" placeholder="SS" />
+          <input type="number" name="seconds" id="seconds" min="1" max="59" placeholder="SS" />
         </label>
       </div>
-      <input type="button" id="btn-start" value="START" />
+      <div>
+        <input type="button" id="btn-start" value="START" />
+      </div>
     </main>
 
     <footer>
