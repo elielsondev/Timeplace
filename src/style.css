@@ -4,14 +4,17 @@
     box-sizing: border-box;
 }
 
+/* font-family: 'Chivo Mono', monospace;
+font-family: 'Cutive Mono', monospace; */
+
 body {
     background-image: url('../beach.jpg');
     color: white;
 }
 
 header {
-    background-color: blue;
-    color: yellow;
+    background-color: #e6e6e6c7;
+    color:  #010053;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -24,11 +27,13 @@ header {
 #title {
     margin: 10px;
     font-size: 34px;
+    font-family: 'Cutive Mono', monospace;
 }
 
 #clock {
     margin: 10px;
-    font-size: 17px;
+    font-size: 15px;
+    font-family: 'Chivo Mono', monospace;
 }
 
 main {
@@ -41,46 +46,61 @@ main {
 }
 
 #inputTime {
-    display:flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 10px;
-    font-size: 20px;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20px;
+  font-family: 'Chivo Mono', monospace;
+  gap: 20px;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 #hours {
   border-radius: 5px;
   border-style: none;
-  padding: 10px;
+  padding: 18px;
   font-size: 30px;
   text-align: center;
   font-weight: 700;
   margin: 0px 10px;
+  font-family: 'Chivo Mono', monospace;
 }
 
 #minutes {
   border-radius: 5px;
   border-style: none;
-  padding: 10px;
+  padding: 18px;
   font-size: 30px;
   text-align: center;
   font-weight: 700;
   margin: 0px 10px;
+  font-family: 'Chivo Mono', monospace;
 }
 
 #seconds {
   border-radius: 5px;
   border-style: none;
-  padding: 10px;
+  padding: 18px;
   font-size: 30px;
   text-align: center;
   font-weight: 700;
   margin: 0px 10px;
+  font-family: 'Chivo Mono', monospace;
 }
 
 #stopwatch {
-    font-size: 1000%;
-    margin-top: 130px;
+  font-size: 1000%;
+  margin-top: 130px;
+  font-family: 'Chivo Mono', monospace;
+  background-color: #010053;
+  padding: 0.15em;
+  border-radius: 30px;
+  align-items: center;
+}
+
+#buttons {
+  text-align: center;
 }
 
 #btn-start {
@@ -91,6 +111,18 @@ main {
     font-size: 30px;
     font-weight: 700;
     padding: 15px 20px;
+    font-family: 'Cutive Mono', monospace;
+}
+
+#btn-stop{
+    background-color: rgb(247, 122, 6);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 30px;
+    font-weight: 700;
+    padding: 15px 20px;
+    font-family: 'Cutive Mono', monospace;
 }
 
 footer {

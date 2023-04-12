@@ -46,88 +46,107 @@ setInterval(() => {
   hoursAndYear.innerText = `${diaDaSemana}, ${time} - ${dataDeHoje}`;
 }, 1000);
 
-const cronometro = document.querySelector("#stopwatch");
+// _____________________________________________________
+// Cronometro, inputs e botões:
 
-let h = document.querySelector("#hours");
-let m = document.querySelector("#minutes");
-let s = document.querySelector("#seconds");
+const stopwatch = document.querySelector("#stopwatch");
 
-const buttonStart = document.querySelector("#btn-start");
 const buttonStop = document.querySelector("#btn-stop");
 
-let horas;
-let minutos;
-let segundos;
+let stopCount = false;
 
-const startFunction = (e) => {
-  e.preventDefault();
-
-  horas = h.value || 0;
-  minutos = m.value || 0;
-  segundos = s.value || 0;
-
-  h.value = null;
-  m.value = null;
-  s.value = null;
-
-  let intervaloStart = setInterval(() => {
-    // Desativa o botão assim que algum valor for inserido e iniciada a contagem:
-    if (
-      typeof horas === "number" ||
-      typeof minutos === "number" ||
-      typeof segundos === "number"
-    ) {
-      buttonStart.disabled = true;
-      buttonStart.style.backgroundColor = "red";
-    }
-
-    // Decremento segundos:
-    if (segundos >= 0 && cronometro.textContent !== "00:00:00") {
-      buttonStart.disabled = true;
-      buttonStart.style.backgroundColor = "red";
-      segundos -= 1;
-    }
-
-    // Gerando 59 segundos:
-    if (segundos < 0 || (segundos === -1 && minutos > 0)) {
-      segundos = 59;
-    }
-
-    // Decremento minutos:
-    if (minutos > 0 && segundos === 59) {
-      minutos -= 1;
-    }
-
-    // Gerando 59 minutos:
-    if (horas >= 1 && minutos === 0 && segundos === 59) {
-      segundos = 59;
-      minutos = 59;
-    }
-
-    // Decremento horas:
-    if (horas > 0 && minutos === 59) {
-      horas -= 1;
-    }
-
-    cronometro.innerText = `${horas <= 9 ? `0${horas}` : horas}:${
-      minutos <= 9 ? `0${minutos}` : minutos
-    }:${segundos <= 9 ? `0${segundos}` : segundos}`;
-
-    // Ativando o botão e parando o setInterval:
-    if (cronometro.textContent === "00:00:00") {
-      buttonStart.disabled = false;
-      buttonStart.style.backgroundColor = "rgb(5, 214, 5)";
-      clearInterval(intervaloStart);
-    }
-  }, 1000);
+const stopCounting = () => {
+  if (stopCount === false) {
+    stopCount = true;
+    window.alert('Clique novamente em STOP, para zerar o cronometro.')
+  } else {
+    stopCount = false;
+  }
+  stopwatch.textContent = "00:00:00";
+  buttonStart.disabled = false;
+  buttonStart.style.backgroundColor = "rgb(5, 214, 5)";
+  return stopCount;
 };
 
-buttonStart.addEventListener("click", startFunction);
+buttonStop.addEventListener("click", stopCounting);
 
-// if (horas === 0 && minutos === 0 && segundos === 0) {
-//   window.alert('Acabou!!')
-//   buttonStart.style.backgroundColor = rgb(5, 214, 5);
-//   buttonStart.disabled = false;
-//   // Fonte: https://horadecodar.com.br/2021/04/20/como-parar-um-setinterval-em-javascript/
-//   clearInterval(intervaloStart);
-// }
+let inputHour = document.querySelector("#hours");
+let inputMinutes = document.querySelector("#minutes");
+let inputSeconds = document.querySelector("#seconds");
+
+const buttonStart = document.querySelector("#btn-start");
+
+const startCounting = (e) => {
+  e.preventDefault();
+
+  let hours;
+  let minutes;
+  let seconds;
+
+  hours = inputHour.value || 0;
+  minutes = inputMinutes.value || 0;
+  seconds = inputSeconds.value || 0;
+
+  inputHour.value = null;
+  inputMinutes.value = null;
+  inputSeconds.value = null;
+
+const startInterval = setInterval(() => {
+  if (stopCount === true  && stopwatch !== '00:00:00') {
+    clearInterval(startInterval);
+  }
+
+  // Desativa o botão assim que algum valor for inserido e iniciada a contagem:
+  if (
+    typeof hours === "number" ||
+    typeof minutes === "number" ||
+    typeof seconds === "number"
+  ) {
+    buttonStart.disabled = true;
+    buttonStart.style.backgroundColor = "rgb(192, 192, 192)";
+  }
+
+  // Decremento segundos:
+  if (seconds >= 0 && stopwatch.textContent !== "00:00:00") {
+    buttonStart.disabled = true;
+    buttonStart.style.backgroundColor = "rgb(192, 192, 192)";
+    seconds -= 1;
+  }
+
+  // Gerando 59 segundos:
+  if (seconds < 0 || (seconds === -1 && minutes > 0)) {
+    seconds = 59;
+  }
+
+  // Decremento minutos:
+  if (minutes > 0 && seconds === 59) {
+    minutes -= 1;
+  }
+
+  // Gerando 59 minutos:
+  if (hours >= 1 && minutes === 0 && seconds === 59) {
+    seconds = 59;
+    minutes = 59;
+  }
+
+  // Decremento horas:
+  if (hours > 0 && minutes === 59 && seconds === 59) {
+    segundos = 59;
+    minutes = 59;
+    hours -= 1;
+  }
+
+  stopwatch.innerText = `${hours <= 9 ? `0${hours}` : hours}:${
+    minutes <= 9 ? `0${minutes}` : minutes
+  }:${seconds <= 9 ? `0${seconds}` : seconds}`;
+
+  // Ativando o botão e parando o setInterval:
+  if (stopwatch.textContent === "00:00:00") {
+    buttonStart.disabled = false;
+    buttonStart.style.backgroundColor = "rgb(5, 214, 5)";
+    clearInterval(startInterval);
+  }
+}, 1000);
+};
+
+buttonStart.addEventListener("click", startCounting);

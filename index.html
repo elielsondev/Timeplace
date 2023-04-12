@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./src/style.css" />
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chivo+Mono&family=Cutive+Mono&display=swap"
+      rel="stylesheet"
+    />
     <title>Timeplace</title>
   </head>
   <body>
@@ -20,23 +26,45 @@
         <label for="hours"
           >Hora:
           <br />
-          <input type="number" name="hours" id="hours" min="1" max="59" placeholder="HH"/>
+          <input
+            type="number"
+            name="hours"
+            id="hours"
+            min="1"
+            max="59"
+            placeholder="HH"
+          />
         </label>
 
         <label for="minutes"
           >Minutos:
           <br />
-          <input type="number" name="minutes" id="minutes" min="1" max="59" placeholder="MM" />
+          <input
+            type="number"
+            name="minutes"
+            id="minutes"
+            min="1"
+            max="59"
+            placeholder="MM"
+          />
         </label>
 
         <label for="seconds"
           >Segundos:
           <br />
-          <input type="number" name="seconds" id="seconds" min="1" max="59" placeholder="SS" />
+          <input
+            type="number"
+            name="seconds"
+            id="seconds"
+            min="1"
+            max="59"
+            placeholder="SS"
+          />
         </label>
       </div>
-      <div>
+      <div id="buttons">
         <input type="button" id="btn-start" value="START" />
+        <input type="button" id="btn-stop" value="STOP" />
       </div>
     </main>
 
