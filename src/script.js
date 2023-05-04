@@ -47,6 +47,7 @@ setInterval(() => {
 }, 1000);
 
 // _____________________________________________________
+
 // Cronometro, inputs e botões:
 
 const stopwatch = document.querySelector("#stopwatch");
@@ -58,11 +59,11 @@ let stopCount = false;
 const stopCounting = () => {
   if (stopCount === false) {
     stopCount = true;
-    window.alert('Clique novamente em STOP, para zerar o cronometro.')
+    window.alert("Clique novamente em STOP, para zerar o cronometro.");
   } else {
     stopCount = false;
   }
-  stopwatch.textContent = "00:00:00";
+  stopwatch.textContent = "00:00";
   buttonStart.disabled = false;
   buttonStart.style.backgroundColor = "rgb(5, 214, 5)";
   return stopCount;
@@ -70,83 +71,57 @@ const stopCounting = () => {
 
 buttonStop.addEventListener("click", stopCounting);
 
-let inputHour = document.querySelector("#hours");
-let inputMinutes = document.querySelector("#minutes");
-let inputSeconds = document.querySelector("#seconds");
+const inputMinutes = document.querySelector("#minutes");
 
 const buttonStart = document.querySelector("#btn-start");
 
 const startCounting = (e) => {
   e.preventDefault();
 
-  let hours;
-  let minutes;
-  let seconds;
+  let minutes = inputMinutes.value || 0;
+  let seconds = 0;
 
-  hours = inputHour.value || 0;
-  minutes = inputMinutes.value || 0;
-  seconds = inputSeconds.value || 0;
-
-  inputHour.value = null;
   inputMinutes.value = null;
-  inputSeconds.value = null;
 
-const startInterval = setInterval(() => {
-  if (stopCount === true  && stopwatch !== '00:00:00') {
-    clearInterval(startInterval);
-  }
+  const startInterval = setInterval(() => {
+    if (stopCount === true && stopwatch !== "00:00") {
+      clearInterval(startInterval);
+    }
 
-  // Desativa o botão assim que algum valor for inserido e iniciada a contagem:
-  if (
-    typeof hours === "number" ||
-    typeof minutes === "number" ||
-    typeof seconds === "number"
-  ) {
-    buttonStart.disabled = true;
-    buttonStart.style.backgroundColor = "rgb(192, 192, 192)";
-  }
+    // Desativa o botão assim que algum valor for inserido e iniciada a contagem:
+    if (typeof minutes === "number") {
+      buttonStart.disabled = true;
+      buttonStart.style.backgroundColor = "rgb(192, 192, 192)";
+    }
 
-  // Decremento segundos:
-  if (seconds >= 0 && stopwatch.textContent !== "00:00:00") {
-    buttonStart.disabled = true;
-    buttonStart.style.backgroundColor = "rgb(192, 192, 192)";
-    seconds -= 1;
-  }
+    if (minutes > 60) {
+      clearInterval(startInterval);
+      window.alert(
+        `O tempo máximo permitido é de 60 minutos, e você colocou ${minutes} minutos. Por favor tente novamente.`
+      );
+      stopwatch.textContent = "00:00";
+    }
 
-  // Gerando 59 segundos:
-  if (seconds < 0 || (seconds === -1 && minutes > 0)) {
-    seconds = 59;
-  }
+    if (seconds >= 0 && minutes < 61) {
+      seconds -= 1;
+    }
 
-  // Decremento minutos:
-  if (minutes > 0 && seconds === 59) {
-    minutes -= 1;
-  }
+    if (minutes >= 1 && seconds === -1) {
+      seconds = 59;
+      minutes -= 1;
+    }
 
-  // Gerando 59 minutos:
-  if (hours >= 1 && minutes === 0 && seconds === 59) {
-    seconds = 59;
-    minutes = 59;
-  }
+    stopwatch.innerText = `${minutes <= 9 ? `0${minutes}` : minutes}:${
+      seconds <= 9 ? `0${seconds}` : seconds
+    }`;
 
-  // Decremento horas:
-  if (hours > 0 && minutes === 59 && seconds === 59) {
-    segundos = 59;
-    minutes = 59;
-    hours -= 1;
-  }
-
-  stopwatch.innerText = `${hours <= 9 ? `0${hours}` : hours}:${
-    minutes <= 9 ? `0${minutes}` : minutes
-  }:${seconds <= 9 ? `0${seconds}` : seconds}`;
-
-  // Ativando o botão e parando o setInterval:
-  if (stopwatch.textContent === "00:00:00") {
-    buttonStart.disabled = false;
-    buttonStart.style.backgroundColor = "rgb(5, 214, 5)";
-    clearInterval(startInterval);
-  }
-}, 1000);
+    // Ativando o botão e parando o setInterval:
+    if (stopwatch.textContent === "00:00") {
+      buttonStart.disabled = false;
+      buttonStart.style.backgroundColor = "rgb(5, 214, 5)";
+      clearInterval(startInterval);
+    }
+  }, 1000);
 };
 
 buttonStart.addEventListener("click", startCounting);
